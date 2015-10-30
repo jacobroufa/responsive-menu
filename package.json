@@ -1,0 +1,11 @@
+{
+  "name": "responsive-menu",
+  "version": "1.0.0",
+  "description": "Responsive menu framework that makes a couple small assumptions about your menu's structure",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jacob M. Roufa",
+  "license": "MIT"
+}

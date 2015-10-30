@@ -1,0 +1,93 @@
+<style>
+  header, nav, ul, li, a {
+    margin: 0;
+    padding: 0;
+  }
+
+  nav {
+    display: inline-block;
+  }
+
+  header {
+    margin: 10px auto;
+    max-width: 1024px;
+    position: relative;
+  }
+
+  ul, li {
+    list-style-type: none;
+  }
+
+  .main-menu {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .main-menu li {
+    display: inline-block;
+    padding: 0 40px;
+  }
+
+  .mobile-menu-link {
+    display: inline-block;
+    text-align: center;
+    width: 30px;
+  }
+
+  .mobile-menu-link.desktop {
+    display: none;
+  }
+</style>
+
+<header>
+  <nav id="main">
+    <ul class="main-menu">
+      <li><a>Menu Item 1</a></li>
+      <li><a>Menu Item 2</a></li>
+      <li><a>Menu Item 3</a></li>
+      <li><a>Menu Item 4</a></li>
+      <li><a>Menu Item 5</a></li>
+      <li><a>Menu Item 6</a></li>
+    </ul>
+    <a class="mobile-menu-link">&#9776;</a>
+  </nav>
+  <nav id="mobile">
+    <ul class="mobile-menu"></ul>
+  </nav>
+</header>
+
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="index.js"></script>
+<script>
+  $( 'header' ).responsiveMenu({
+    tablet: 640,
+    headerMargins: 30,
+    initCallback: function() {
+      console.log( 'init', this );
+    },
+    desktopCallback: function() {
+      var mobileMenuLink = this.find( '.mobile-menu-link' );
+
+      if ( !mobileMenuLink.hasClass( 'desktop' )) {
+        console.log( 'adding `desktop` class to mobile menu link' );
+        mobileMenuLink.addClass( 'desktop' );
+      }
+    },
+    tabletCallback: function() {
+      var mobileMenuLink = this.find( '.mobile-menu-link' );
+
+      if ( mobileMenuLink.hasClass( 'desktop' )) {
+        console.log( 'removing `desktop` class to mobile menu link' );
+        mobileMenuLink.removeClass( 'desktop' );
+      }
+    },
+    mobileCallback: function() {
+      var mainMenu = this.find( '#main' );
+
+      if ( !mainMenu.hasClass( 'mobile' )) {
+        console.log( 'adding class `mobile` to main menu' );
+        mainMenu.addClass( 'mobile' );
+      }
+    }
+  });
+</script>
